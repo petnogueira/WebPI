@@ -17,6 +17,7 @@ def off():
 try:
     f = open('../_model/blink.txt', 'r+')
     while True:
+        time.sleep(1)
         f.seek(0)
         resp = f.read()
         if (resp == "on"):

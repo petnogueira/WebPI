@@ -1,6 +1,6 @@
 <?php 
-  $liga = "off";
-  if (isset($_POST["blink"])){
+ $liga = "off";
+ if (isset($_POST["blink"])){
     if (isset($_POST["blink"]["ck"]))
       $liga = "on";
   }
@@ -8,4 +8,5 @@
   $myfile = fopen($pathFile, "w");
   fwrite($myfile, $liga);
   fclose($myfile);
+  
 ?>
