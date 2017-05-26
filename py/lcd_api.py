@@ -28,9 +28,11 @@ def main():
   f = open('../_model/display.txt', 'r+')
   resp_old = ""
   while True:
+    time.sleep(1)
     f.seek(0)
     resp = f.read()
-    if ():
+    if (resp != resp_old):
+        lcd_clear()
         resp_old = resp
         wmsg(resp)
 
