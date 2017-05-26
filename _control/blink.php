@@ -1,7 +1,7 @@
 <?php 
   $liga = "off";
   if (isset($_POST["blink"])){
-    if (isset($_POST["blink['ck']"])){
+    if (isset($_POST["blink"]["ck"]))
       $liga = "on";
   }
   $pathFile = "../_model/blink.txt";
