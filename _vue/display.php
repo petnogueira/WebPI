@@ -1,18 +1,20 @@
-<div class="container">
-  <h2>Help text</h2>
-  <p>Use the .help-block class to add a block level help text in forms:</p>
-  <form id="display" action="post.php" method="post">
-    <div class="checkbox">
-      <label><input type="checkbox" value="" name="display[ck]" <?php if ($liga == "on") echo "checked";?>>Active</label>
-    </div>
-    <div class="form-group">
-      <label for="msg">Password:</label>
-      <input type="text" class="form-control" id="display_msg" name="display[msg]" placeholder="Enter mesage">
-      <span class="help-block">This is some help text that breaks onto a new line and may extend more than one line.</span>
-    </div>
-    <input type="submit" name="submit" value="Submit" />
-  </form>
-</div>
+<?php 
+$msg_checked = "";
+if (isset($liga))
+  if ($liga == "on") 
+    $msg_checked = "checked";
+?>
+<form id="display" action="post.php" method="post">
+  <div class="checkbox disabled">
+    <label><input type="checkbox" value="" name="display[ck]" <?php echo $msg_checked;?> disabled>Active</label>
+  </div>
+  <div class="form-group">
+    <label for="msg">Enter your mesage to be display:</label>
+    <input type="text" class="form-control" id="display_msg" name="display[msg]" placeholder="Enter mesage">
+    <!-- span class="help-block">This is some help text that breaks onto a new line and may extend more than one line.</span -->
+  </div>
+  <input type="submit" name="submit" value="Submit" />
+</form>
 <!-- the result of the search will be rendered inside this div -->
 <div id="result_display"></div>
  

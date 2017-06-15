@@ -1,14 +1,9 @@
-
-<div class="container">
-  <h2>Blink</h2>
-  <form id="blink" action="post.php" method="post">
-    <p>Blink: </p>
-    <div class="checkbox">
-      <label><input type="checkbox" value="" id="blink_ck" name="blink_ck">Active</label>
-    </div>
-    <input type="submit" name="submit" value="Submit" />
-  </form>
-</div>
+<form id="blink" action="post.php" method="post">
+  <div class="checkbox">
+    <label><input type="checkbox" value="" id="blink_ck" name="blink_ck">Active</label>
+  </div>
+  <input type="submit" name="submit" value="Submit" />
+</form>
 
 <!-- the result of the search will be rendered inside this div -->
 <div id="result_blink"></div>

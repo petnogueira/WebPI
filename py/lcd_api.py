@@ -16,7 +16,7 @@ LCD_CHR = True
 LCD_CMD = False
 
 #File with text
-FILE_PATH = '../_model/display.txt'
+FILE_PATH = '/var/www/html/WebPI/_model/display.txt'
 
 # Commands
 LCD_CLEARDISPLAY        = 0x01
@@ -75,13 +75,11 @@ def main():
     f.close()
 
 def delay_microseconds(microseconds):
-    # Busy wait in loop because delays are generally very short (few microseconds).
-    end = time.time() + (microseconds/1000000.0)
-    while time.time() < end:
-        pass
+  time.sleep(microseconds/1000000.0)
 
 def lcd_init():
-  GPIO.setmode(GPIO.BCM)       # Use BCM GPIO numbers
+  # Use BCM GPIO numbers
+  GPIO.setmode(GPIO.BCM)
   for pin in (LCD_RS, LCD_EN, LCD_D4, LCD_D5, LCD_D6, LCD_D7):
     GPIO.setup(pin, GPIO.OUT)
 
@@ -107,7 +105,6 @@ def home():
   delay_microseconds(3000)  # this command takes a long time!
 
 def clear():
-  """Clear the LCD."""
   write_data(LCD_CLEARDISPLAY)  # command to clear display
   delay_microseconds(3000)  # 3000 microsecond sleep, clearing the display takes a long time
 
@@ -147,12 +144,9 @@ def is_bit_set(value, n):
   return ((value >> n) & 1) > 0
 
 def write_data(value, char_mode=False):
-  """Write 8-bit value in character or data mode.  Value should be an int
-  value from 0-255, and char_mode is True if character data or False if
-  non-character data (default).
-  """
   # One millisecond delay to prevent writing too quickly.
   delay_microseconds(1000)
+
   # Set character / data bit.
   GPIO.output(LCD_RS, char_mode)
   # Write upper 4 bits.
